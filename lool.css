@@ -1,0 +1,48 @@
+/*hoja de estilos externas*/
+body{
+    background-color: cadetblue;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+table{
+    width: 90%;
+    margin: auto;
+    border: 2px solid black;
+    border-collapse: collapse;
+    caption-side: bottom;
+}
+/*para todos*/
+th,td{
+    border: 2px;
+   
+}
+/*para elementos adentro de li*/
+
+table tr:nth-child(add){
+    background-color: beige;
+}
+
+table tr:nth-child(even){
+    background-color: green;
+    color: white;
+}
+
+th{
+    background-color: darkgoldenrod;
+    padding: 14px;
+    color: white;
+}
+
+td{
+    padding: 12px;
+    text-align: justify;
+}
+
+table tr:hover{
+    background-color: red;
+    color: white;
+}
+table td:hover{
+    background-color: darkblue;
+    color: white;
+}
+
