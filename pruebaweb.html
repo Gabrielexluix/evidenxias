@@ -1,0 +1,118 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Bungee+Inline&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Orbitron:wght@400..900&family=Space+Grotesk:wght@300..700&family=Tektur:wght@400..900&display=swap" rel="stylesheet">
+    <title>AereoMexico</title>
+    <link rel="stylesheet" href="iniciodeprueba.css">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+		<script src="https://unpkg.com/unlazy@0.11.3/dist/unlazy.with-hashing.iife.js" defer init></script>
+		<script type="text/javascript">
+			window.tailwind.config = {
+				darkMode: ['class'],
+				theme: {
+					extend: {
+						colors: {
+							border: 'hsl(var(--border))',
+							input: 'hsl(var(--input))',
+							ring: 'hsl(var(--ring))',
+							background: 'hsl(var(--background))',
+							foreground: 'hsl(var(--foreground))',
+							primary: {
+								DEFAULT: 'hsl(var(--primary))',
+								foreground: 'hsl(var(--primary-foreground))'
+							},
+							secondary: {
+								DEFAULT: 'hsl(var(--secondary))',
+								foreground: 'hsl(var(--secondary-foreground))'
+							},
+							destructive: {
+								DEFAULT: 'hsl(var(--destructive))',
+								foreground: 'hsl(var(--destructive-foreground))'
+							},
+							muted: {
+								DEFAULT: 'hsl(var(--muted))',
+								foreground: 'hsl(var(--muted-foreground))'
+							},
+							accent: {
+								DEFAULT: 'hsl(var(--accent))',
+								foreground: 'hsl(var(--accent-foreground))'
+							},
+							popover: {
+								DEFAULT: 'hsl(var(--popover))',
+								foreground: 'hsl(var(--popover-foreground))'
+							},
+							card: {
+								DEFAULT: 'hsl(var(--card))',
+								foreground: 'hsl(var(--card-foreground))'
+							},
+						},
+					}
+				}
+			}
+		</script>
+		
+  </head>
+  <body>
+    <div class="p-6 bg-blue-500 dark:bg-red-500">
+  <img src="https://a21.com.mx/sites/default/files/field/image/C054DCF6-BEDF-4B50-8D63-96DF8949B731.jpeg" alt="Playa" class="w-full h-48 object-cover rounded-lg mb-6" />
+  <div class="flex justify-between items-center mb-4">
+    <h1 class="text-2xl font-bold text-white">Aereomexico</h1>
+    <nav>
+      <ul class="flex space-x-4">
+        <li><a href="#" class="text-white" onclick="alert('Reservar clicked!')">Reservar</a></li>
+        <li><a href="#" class="text-white" onclick="alert('Información clicked!')">Información</a></li>
+        <li><a href="#" class="text-white" onclick="alert('Mi reserva clicked!')">Mi reserva</a></li>
+        <li><a href="#" class="text-white" onclick="alert('Estado de vuelo clicked!')">Estado de vuelo</a></li>
+        <li><a href="#" class="text-white" onclick="alert('Promociones clicked!')">Promociones</a></li>
+        <li><a href="#" class="text-white" onclick="alert('Dólar clicked!')">Dólar</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="bg-blue-700 dark:bg-red-700 p-4 rounded-lg mb-6">
+    <div class="flex items-center">
+      <input type="text" placeholder="Monterrey (MTY)" class="border border-white dark:border-black rounded-lg p-2 flex-grow" />
+      <button class="bg-white text-black dark:bg-black dark:text-white p-2 rounded-lg ml-2" onclick="alert('Buscar clicked!')">Buscar</button>
+    </div>
+  </div>
+  <div class="bg-white dark:bg-red-200 p-4 rounded-lg mb-6">
+    <h2 class="text-xl font-bold text-blue-500 dark:text-white">¡Outlet de vuelos!</h2>
+    <p class="text-white">Vuelos nacionales desde $1,900 y desde 310 Puntos Dorados TLA.</p>
+    <a href="#" class="text-red-500 dark:text-white" onclick="alert('Saber más clicked!')">Saber más ></a>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div class="bg-white dark:bg-red-200 rounded-lg p-4">
+      <img src="https://res.cloudinary.com/dtljonz0f/image/upload/c_auto,ar_4:3,w_3840,g_auto/f_auto/q_auto/v1/gc-v1/london-pass/blog/London_Big_Ben_phone_boxes_ss_non-editorial_qsmska?_a=BAVAZGDX0" alt="Bogotá" class="rounded-lg mb-2" />
+      <h3 class="font-bold">Londres</h3>
+      <p class="text-white">Desde: $1,902 MXN</p>
+      <a href="#" class="text-red-500 dark:text-white" onclick="alert('Reservar Bogotá clicked!')">Reservar ahora</a>
+    </div>
+    <div class="bg-white dark:bg-red-200 rounded-lg p-4">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/New_york_times_square-terabass.jpg/1200px-New_york_times_square-terabass.jpg" alt="Las Vegas" class="rounded-lg mb-2" />
+      <h3 class="font-bold">New York</h3>
+      <p class="text-white">Desde: $1,499 MXN</p>
+      <a href="#" class="text-red-500 dark:text-white" onclick="alert('Reservar Las Vegas clicked!')">Reservar ahora</a>
+    </div>
+    <div class="bg-white dark:bg-red-200 rounded-lg p-4">
+      <img src="https://noticias.imer.mx/wp-content/uploads/2023/06/Corea-del-Sur-edad-unica-1.png" alt="Houston" class="rounded-lg mb-2" />
+      <h3 class="font-bold">Corea Del Sur</h3>
+      <p class="text-white">Desde: $1,125 MXN</p>
+      <a href="#" class="text-red-500 dark:text-white" onclick="alert('Reservar Houston clicked!')">Reservar ahora</a>
+    </div>
+    <div class="bg-white dark:bg-red-200 rounded-lg p-4">
+      <img src="https://media.admagazine.com/photos/63c9a4f6c0e0d93372ff71f8/master/w_1600%2Cc_limit/que-lugares-visitar-en-barcelona.jpg" alt="Los Ángeles" class="rounded-lg mb-2" />
+      <h3 class="font-bold">España</h3>
+      <p class="text-white">Desde: $1,444 MXN</p>
+      <a href="#" class="text-red-500 dark:text-white" onclick="alert('Reservar Los Ángeles clicked!')">Reservar ahora</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  // You can add more JavaScript functionality here if needed
+</script>
+
+  </body>
+</html>
