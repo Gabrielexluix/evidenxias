@@ -1,0 +1,21 @@
+body {
+    font-size: 16px; /* Tamaño base */
+}
+.contenedor {
+    width: 80%; /* Unidad relativa */
+    max-width: 1200px; /* Unidad absoluta */
+    margin: 0 auto;
+}
+h1 {
+    font-size: 2rem; /* Relativo al tamaño de fuente del elemento raíz */
+}
+p {
+    font-size: 1em; /* Relativo al tamaño de fuente del elemento padre */
+    line-height: 1.5; /* Relativo al tamaño de fuente del mismo elemento */
+}
+.caja {
+    width: 50vw; /* 50% del ancho de la ventana gráfica */
+    height: 20vh; /* 20% de la altura de la ventana gráfica */
+    background-color: lightblue;
+    margin-bottom: 20px;
+}
