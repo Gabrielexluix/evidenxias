@@ -1,0 +1,146 @@
+body {
+    font-family: "Audiowide", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.audiowide-regular {
+    font-family: "Audiowide", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+.bungee-inline-regular {
+    font-family: "Bungee Inline", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+.space-grotesk-uniquifier {
+    font-family: "Space Grotesk", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+  }
+.orbitron-uniquifier{
+    font-family: "Orbitron", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+  }  
+  
+.merriweather-uniquifier {
+    font-family: "Merriweather", serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+    font-variation-settings:
+      "wdth" 100;
+  }
+header {
+    background: hwb(240 0% 75%);
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+    width: auto;
+    size: 100%;
+}
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    
+}
+nav ul li {
+    display: inline;
+    size: 100%;
+}
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+.contenedor video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width:100.1%;
+    height: max-content;
+    z-index: -1;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+  }
+  .contenido {
+    position: relative;
+    z-index: 1;
+    color: #ffffff;
+    text-align: center;
+    top: 40%;
+    font-size: 60px;
+    font-family: "sans-serif";
+  }
+/*font-family: "Audiowide";*/
+h1{
+    font-size: 100px;
+    font-family: "Bungee Inline", serif ;
+    color: white;
+    text-shadow: 2px 2px  white;
+}
+
+.sub{
+    font-family:"Audiowide",Calibri;
+    font-size: 50px;
+    color: white;
+}
+.lugares li h2{
+    text-align: center;
+    color: black;
+    background-color:#9b0303;
+    border: none;
+    height: 100%;
+    width: 100%;
+}
+
+.lugares li img{
+    border-radius: 8%;
+}
+.lugares li p{
+    background-color: white;
+    color: crimson;
+}
+
+button{
+    font-family: "Bungee Inline";
+    background-color: white;
+    color: black;
+}
+.div, .service {
+    display:table;
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid hsl(0, 100%, 36%);
+    text-align: center;
+    background-color: hwb(244 0% 0%);
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 12px;
+}
+.trainers{
+    background: url('instruc.jpeg') no-repeat left center;
+    font-size: 18px;
+    text-align: right;
+    margin: 10px;
+    padding: 10px;
+}
+h2{
+    font-family: "Bungee Inline", sans-serif;
+}
+footer {
+    background: #000;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: relative;
+    bottom: 0;
+    width: 98.5%;
+}
