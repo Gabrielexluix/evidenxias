@@ -1,0 +1,38 @@
+   body{
+    background-color: lightgreen;
+    text-align: center;
+    
+   }
+   .boton {
+    background-color: hsl(172, 100%, 50%);
+    color: white;
+    padding: 10px 20px;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+
+  .galeria {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .imagen img {
+    width: 300px;
+    height: 200px;
+    border: 10px solid white;
+    border-radius: 10px;
+  }
+
+  .boton:hover ~ .galeria {
+    display: none;
+  }
+
+  /* Cambiar estilo del botón cuando se pasa el mouse encima */
+  .boton:hover {
+    background-color: hsl(120, 100%, 21%);
+  }
