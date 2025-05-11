@@ -1,0 +1,75 @@
+/* Fuente limpia y moderna */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f9;
+    margin: 0;
+    padding: 20px;
+    color: #1a1a1a;
+}
+
+/* Encabezado principal */
+h1 {
+    color: #002C5F; /* Azul Aeroméxico */
+    border-bottom: 3px solid #002C5F;
+    padding-bottom: 10px;
+}
+
+/* Subtítulos */
+h2 {
+    color: #002C5F;
+    margin-top: 40px;
+}
+
+/* Etiquetas */
+label {
+    font-weight: bold;
+    display: block;
+    margin-top: 15px;
+    color: #002C5F;
+}
+
+/* Inputs y Selects */
+input[type="text"],
+input[type="date"],
+input[type="number"],
+select {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Botones */
+.botones input[type="button"] {
+    background-color: #002C5F; /* Azul oscuro */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 20px;
+    margin-right: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.botones input[type="button"]:hover {
+    background-color: #004b99;
+}
+
+/* Resultado de cotización */
+#resultado {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+    max-width: 500px;
+    color: #333;
+}
+
+/* Iframe para PDF */
+iframe {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}

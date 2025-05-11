@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="cotizacionesCSS">
+  <title>Cotizador de Vuelos</title>
+
+  <!-- Enlace al CSS externo -->
+  <link rel="stylesheet" href="estilos.css">
+
+  <!-- jsPDF desde CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+  <h1>Cotizador de Vuelos</h1>
+
+  <form id="formulario">
+    <label for="nombre">Nombre completo:</label>
+    <input type="text" id="nombre" required>
+
+    <label for="origen">Origen:</label>
+    <select id="origen" required>
+      <option value="">-- Selecciona --</option>
+      <option value="Ciudad de México">Ciudad de México</option>
+      <option value="Monterrey">Monterrey</option>
+      <option value="Guadalajara">Guadalajara</option>
+    </select>
+
+    <label for="destino">Destino:</label>
+    <select id="destino" required>
+      <option value="">-- Selecciona --</option>
+      <option value="Cancún">Cancún</option>
+      <option value="Tijuana">Tijuana</option>
+      <option value="Los Ángeles">Los Ángeles</option>
+    </select>
+
+    <label for="fecha">Fecha del vuelo:</label>
+    <input type="date" id="fecha" required>
+
+    <label for="clase">Clase:</label>
+    <select id="clase" required>
+      <option value="Económica">Económica</option>
+      <option value="Ejecutiva">Ejecutiva</option>
+      <option value="Primera Clase">Primera Clase</option>
+    </select>
+
+    <label for="pasajeros">Número de pasajeros:</label>
+    <input type="number" id="pasajeros" value="1" min="1" required>
+
+    <div class="botones">
+      <input type="button" value="Calcular cotización" onclick="calcularCotizacion()">
+      <input type="button" value="Generar PDF" onclick="generarPDF()">
+    </div>
+  </form>
+
+  <h2>Resultado de la cotización:</h2>
+  <div id="resultado"></div>
+
+  <h2>Vista previa del PDF:</h2>
+  <iframe width="500" height="400"></iframe>
+
+  <script>
+    function obtenerPrecioBase(origen, destino) {
+      const rutas = {
+        "Ciudad de México-Cancún": 1500,
+        "Ciudad de México-Tijuana": 2000,
+        "Ciudad de México-Los Ángeles": 5000,
+        "Monterrey-Cancún": 1800,
+        "Monterrey-Tijuana": 1700,
+        "Monterrey-Los Ángeles": 5200,
+        "Guadalajara-Cancún": 1600,
+        "Guadalajara-Tijuana": 2100,
+        "Guadalajara-Los Ángeles": 4800
+      };
+      return rutas[`${origen}-${destino}`] || 0;
+    }
+
+    function calcularCotizacion() {
+      const nombre = document.getElementById('nombre').value;
+      const origen = document.getElementById('origen').value;
+      const destino = document.getElementById('destino').value;
+      const fecha = document.getElementById('fecha').value;
+      const clase = document.getElementById('clase').value;
+      const pasajeros = parseInt(document.getElementById('pasajeros').value);
+
+      if (origen === destino) {
+        alert("El origen y el destino no pueden ser iguales.");
+        return;
+      }
+
+      let precioBase = obtenerPrecioBase(origen, destino);
+      if (precioBase === 0) {
+        alert("Ruta no disponible.");
+        return;
+      }
+
+      let factorClase = 1;
+      if (clase === "Ejecutiva") factorClase = 1.5;
+      else if (clase === "Primera Clase") factorClase = 2;
+
+      const total = precioBase * factorClase * pasajeros;
+
+      const resultado = `
+        <strong>Pasajero:</strong> ${nombre}<br>
+        <strong>Origen:</strong> ${origen}<br>
+        <strong>Destino:</strong> ${destino}<br>
+        <strong>Fecha del vuelo:</strong> ${fecha}<br>
+        <strong>Clase:</strong> ${clase}<br>
+        <strong>Pasajeros:</strong> ${pasajeros}<br>
+        <strong>Total estimado:</strong> $${total.toFixed(2)} MXN
+      `;
+      document.getElementById('resultado').innerHTML = resultado;
+    }
+
+    async function generarPDF() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+
+      const nombre = document.getElementById('nombre').value;
+      const origen = document.getElementById('origen').value;
+      const destino = document.getElementById('destino').value;
+      const fecha = document.getElementById('fecha').value;
+      const clase = document.getElementById('clase').value;
+      const pasajeros = parseInt(document.getElementById('pasajeros').value);
+
+      let precioBase = obtenerPrecioBase(origen, destino);
+      let factorClase = 1;
+      if (clase === "Ejecutiva") factorClase = 1.5;
+      else if (clase === "Primera Clase") factorClase = 2;
+
+      const total = precioBase * factorClase * pasajeros;
+
+      // Encabezado
+      doc.setTextColor(9, 7, 121);
+      doc.setFontSize(20);
+      doc.text("COTIZACIÓN DE VUELO", 20, 20);
+
+      doc.setFontSize(12);
+      doc.setTextColor(100, 100, 100);
+      doc.text(`Fecha de emisión: ${new Date().toLocaleDateString()}`, 20, 28);
+
+      doc.setDrawColor(0);
+      doc.line(20, 32, 190, 32);
+
+      // Datos
+      doc.setTextColor(0, 0, 0);
+      doc.setFontSize(14);
+      doc.text("DATOS DEL CLIENTE", 20, 40);
+      doc.setFontSize(12);
+      doc.text(`Nombre: ${nombre}`, 20, 48);
+
+      doc.setFontSize(14);
+      doc.text("DETALLES DEL VUELO", 20, 60);
+      doc.setFontSize(12);
+      doc.text(`Origen: ${origen}`, 20, 68);
+      doc.text(`Destino: ${destino}`, 20, 76);
+      doc.text(`Fecha del vuelo: ${fecha}`, 20, 84);
+      doc.text(`Clase: ${clase}`, 20, 92);
+      doc.text(`Número de pasajeros: ${pasajeros}`, 20, 100);
+
+      doc.setFontSize(14);
+      doc.setTextColor(0, 102, 204);
+      doc.text(`TOTAL ESTIMADO: $${total.toFixed(2)} MXN`, 20, 115);
+
+      const string = doc.output('datauristring');
+      document.querySelector('iframe').src = string;
+    }
+  </script>
+</body>
+</html>
