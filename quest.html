@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="questCSS.css">
+    <title>Diagnóstico de Videojuegos</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .pregunta { margin-bottom: 15px; }
+        #resultado { margin-top: 20px; font-weight: bold; }
+        canvas { margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+<h1>Diagnóstico: Conocimientos de Videojuegos</h1>
+
+<form id="formulario">
+    <div class="pregunta">
+        <label>1. ¿Cuál de los siguientes juegos fue creado por Nintendo?</label><br>
+        <input type="radio" name="p1" value="1"> The Legend of Zelda<br>
+        <input type="radio" name="p1" value="0"> God of War<br>
+    </div>
+
+    <div class="pregunta">
+        <label>2. ¿Qué consola fue lanzada primero?</label><br>
+        <input type="radio" name="p2" value="1"> PlayStation 1<br>
+        <input type="radio" name="p2" value="0"> Xbox 360<br>
+    </div>
+
+    <div class="pregunta">
+        <label>3. ¿Cuál de estos géneros es típicamente multijugador en línea?</label><br>
+        <input type="radio" name="p3" value="1"> Battle Royale<br>
+        <input type="radio" name="p3" value="0"> Puzzle<br>
+    </div>
+
+    <button type="button" onclick="evaluar()">Enviar</button>
+</form>
+
+<div id="resultado"></div>
+
+<canvas id="grafico" width="400" height="200"></canvas><br>
+
+<button onclick="generarPDF()">Generar PDF</button>
+
+<script>
+    let respuestas = [];
+    let puntosPorPregunta = [];
+
+    function evaluar() {
+        const form = document.forms["formulario"];
+        let total = 0;
+        respuestas = [];
+        puntosPorPregunta = [];
+
+        for (let i = 1; i <= 3; i++) {
+            const seleccionada = form[`p${i}`].value;
+            const valor = parseInt(seleccionada);
+            respuestas.push(valor === 1 ? "Correcta" : "Incorrecta");
+            puntosPorPregunta.push(valor);
+            total += valor;
+        }
+
+        document.getElementById("resultado").innerText = `Tu calificación: ${total}/3`;
+
+        dibujarGrafico(puntosPorPregunta);
+    }
+
+    function dibujarGrafico(datos) {
+        const ctx = document.getElementById("grafico").getContext("2d");
+        ctx.clearRect(0, 0, 400, 200);
+        const colores = ["#4caf50", "#2196f3", "#f44336"];
+
+        datos.forEach((valor, i) => {
+            ctx.fillStyle = colores[i];
+            ctx.fillRect(i * 120 + 30, 150 - valor * 100, 60, valor * 100);
+            ctx.fillStyle = "#000";
+            ctx.fillText(`P${i+1}`, i * 120 + 50, 170);
+        });
+    }
+
+    async function generarPDF() {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+
+        doc.setFontSize(16);
+        doc.text("Resultados del Diagnóstico: Videojuegos", 20, 20);
+        respuestas.forEach((resp, i) => {
+            doc.text(`Pregunta ${i+1}: ${resp}`, 20, 40 + i * 10);
+        });
+
+        doc.text(`Calificación final: ${puntosPorPregunta.reduce((a, b) => a + b)}/3`, 20, 80);
+
+        // Captura el gráfico como imagen
+        const canvas = document.getElementById("grafico");
+        const imgData = await html2canvas(canvas).then(c => c.toDataURL("image/png"));
+
+        doc.addImage(imgData, 'PNG', 20, 90, 160, 80);
+
+        doc.save("resultado_diagnostico_videojuegos.pdf");
+    }
+</script>
+
+</body>
+</html>
